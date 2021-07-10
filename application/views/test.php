@@ -23,7 +23,25 @@
         <div class="row">
           <div class="col-12">
 
-      
+          <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <h3><?php echo "Hola ".$this->session->userdata('login'); ?></h3>
+                <h3><?php echo "Rol: ".$this->session->userdata('tipo'); ?></h3>
+                <h3><?php echo "".$this->session->userdata('idusuario'); ?></h3>
+                <br>
+                <?php 
+                  echo date('Y/m/d H:i:s');
+                ?>
+
+              <?php
+              echo form_open_multipart('usuarios/logout');
+              ?>
+              <button type="submit" class="btn btn-danger btn-block">Salir</button>
+              <?php
+                  echo form_close();
+              ?>
+               </div>
 
             <div class="card">
               <div class="card-header">
@@ -40,6 +58,8 @@
                     echo form_close();
                     ?>
               </div>
+
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
