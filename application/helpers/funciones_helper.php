@@ -12,10 +12,10 @@ function formatearFecha($fecha)
 function estado($nota){
     if($nota>=51)
     {
-        $estado="APROBADO";
+        $estado="APROBADO FELICIDADES";
     }else
     {
-        $estado="REPROBADO";
+        $estado="REPROBADO A PONERLE MAS EMPEÑO";
     }
     return $estado;
 }
