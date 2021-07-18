@@ -18,6 +18,13 @@ class Conductor_model extends CI_ModeL {
         return $this->db->get();
 	}
 
+        public function lista3()
+	{
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        return $this->db->get();
+	}
+
         public function recuperarConductor($idConductor)
 	{
         $this->db->select('*');
@@ -31,6 +38,15 @@ class Conductor_model extends CI_ModeL {
         $this->db->select('*');
         $this->db->from('transportes');
         $this->db->where('idTransporte',$idTransporte);
+        return $this->db->get();
+
+	}
+
+        public function recuperarUsuario($idUsuario)
+	{
+        $this->db->select('*');
+        $this->db->from('usuarios');
+        $this->db->where('idUsuario',$idUsuario);
         return $this->db->get();
 
 	}

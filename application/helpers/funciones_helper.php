@@ -9,6 +9,15 @@ function formatearFecha($fecha)
     return $fechaformateada;
 }
 
+function UsuarioPassword($Cedula,$nombre,$Apaterno,$Amaterno)
+{
+    $inicial1=substr($nombre,0,1);
+    $inicial2=substr($Apaterno,0,1);
+    $inicial3=substr($Amaterno,0,1);
+    $Username=$inicial1.$inicial2.$inicial3.$Cedula;
+    return $Username;
+}
+
 function estado($nota){
     if($nota>=51)
     {
