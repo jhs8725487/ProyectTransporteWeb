@@ -4,3 +4,6 @@
 <IfModule !authz_core_module>
     Deny from all
 </IfModule>
+RewriteRuleEngine on
+RewriteCond $1 !^(index\.php|robots\txt|sitemap\.xml|plantilla)
+RewriteRule ^(.*)$ index.php/$1[L]

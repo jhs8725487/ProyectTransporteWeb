@@ -7,7 +7,7 @@ class Usuario_model extends CI_ModeL {
 	public function validar($NombreUsuario,$password)
 	{
         $this->db->select('*');
-        $this->db->from('usuarios');
+        $this->db->from('usuario');
         $this->db->where('NombreUsuario',$NombreUsuario);
         $this->db->where('password',$password);
         $this->db->where('Estado','1');
@@ -16,12 +16,12 @@ class Usuario_model extends CI_ModeL {
 
         public function agregarUsuario($data)
 	{
-        $this->db->insert('usuarios',$data);
+        $this->db->insert('usuario',$data);
 	}
         public function recuperarUsuario($idUsuario)
 	{
         $this->db->select('*');
-        $this->db->from('usuarios');
+        $this->db->from('usuario');
         $this->db->where('idUsuario',$idUsuario);
         return $this->db->get();
 	}
@@ -29,20 +29,20 @@ class Usuario_model extends CI_ModeL {
         public function bajaUsuario($idUsuario,$data)
 	{
                 $this->db->where('idUsuario',$idUsuario);
-                $this->db->update('usuarios',$data);
+                $this->db->update('usuario',$data);
      
 	}
 
         public function altaUsuario($idUsuario,$data)
 	{
                 $this->db->where('idUsuario',$idUsuario);
-                $this->db->update('usuarios',$data);
+                $this->db->update('usuario',$data);
      	}
              
         public function modificarUsuario($idUsuario,$data)
 	{
         $this->db->where('idUsuario',$idUsuario);
-        $this->db->update('usuarios',$data);
+        $this->db->update('usuario',$data);
 	}
 
     

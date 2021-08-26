@@ -13,9 +13,9 @@ class Usuarios extends CI_Controller {
         }
         else{
             //cargar un login form
-            $this->load->view('inc_head.php');	//archivos de cabeceras
-		    $this->load->view('loginform',$data); //contenido
-		    $this->load->view('inc_footer.php'); //archivos del pie de pagina*/
+            //$this->load->view('inc_head.php');	//archivos de cabeceras
+		    $this->load->view('loginform2',$data); //contenido
+		    //$this->load->view('inc_footer.php'); //archivos del pie de pagina*/
 
         }
 	}
