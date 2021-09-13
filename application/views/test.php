@@ -1,161 +1,89 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 style="text-align:center">ADMINISTRACION DE USUARIOS</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-<link rel="stylesheet" href="../bootstrap/css/estilopropio.css">
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Welcome to CodeIgniter</title>
 
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title"></h3>
-                <h3><?php echo "Usuario: ".$this->session->userdata('NombreUsuario'); ?></h3>
-                <h3><?php echo "Rol: ".$this->session->userdata('Rol'); ?></h3>
-                <h3><?php echo "".$this->session->userdata('idusuario'); ?></h3>
-                <?php 
-                  echo date('Y/m/d H:i:s');
-                ?>
-              <br>
-              <?php
-              echo form_open_multipart('usuarios/logout');
-              ?>
-              <button type="submit" class="btn btn-danger btn-block">Salir</button>
-              <?php
-                  echo form_close();
-              ?>
-               </div>
+	<style type="text/css">
 
+	::selection { background-color: #E13300; color: white; }
+	::-moz-selection { background-color: #E13300; color: white; }
 
-               <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">LISTADO DE USUARIOS</h3>
-                <br>
-                <?php 
-                  echo date('Y/m/d H:i:s');
-                ?>
-                    <?php
-                    echo form_open_multipart('usuarios/agregar');
-                    ?>
-                      <button type="submit" class="btn btn-success btn-xs">Agregar usuario</button>
-                    <?php
-                    echo form_close();
-                    ?>
-              </div>
+	body {
+		background-color: #fff;
+		margin: 40px;
+		font: 13px/20px normal Helvetica, Arial, sans-serif;
+		color: #4F5155;
+	}
 
-              
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Sexo</th>
-                    <th>Estado</th>
-                    <th>Cedula</th>    
-                    <th>Usuario</th> 
-                    <th>Rol</th> 
-                    <th>Fecha Ingreso</th>  
-                    <th>Dar de alta</th> 
-                    <th>Dar de baja</th>  
-                              
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-              $indice=1;
-              foreach($usuarios->result() as $row){
-              ?>
+	a {
+		color: #003399;
+		background-color: transparent;
+		font-weight: normal;
+	}
 
-                  <tr>
-                    <td><?php echo $indice;?></td>
-                    <td><?php echo $row->Nombre;?></td>
-                    <td><?php echo $row->ApellidoPaterno;?></td>
-                    <td><?php echo $row->ApellidoMaterno;?></td>
-                    <td><?php echo $row->FechaNacimiento;?></td>
-                    <td><?php echo $row->Sexo;?></td>
-                    <td><?php echo $row->Estado;?></td>
-                    <td><?php echo $row->Cedula;?></td>
-                    <td><?php echo UsuarioPassword($row->Cedula,$row->Nombre,$row->ApellidoPaterno,$row->ApellidoMaterno);?></td>
-                    <td><?php echo $row->Rol;?></td>
-                    <td><?php echo formatearFecha($row->FechaRegistro);?></td>
-           
-           
-                    <td>
-        <?php
-          echo form_open_multipart('usuarios/DarAlta');
-        ?>
-        <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario; ?>">
-        <button type="submit" class="btn btn-primary btn-xs">Alta</button>
-        <?php
-          echo form_close();
-        ?>
-        </td>
-        <td>
-        <?php
-          echo form_open_multipart('usuarios/DarBaja');
-        ?>
-        <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario; ?>">
-        <button type="submit" class="btn btn-danger btn-xs">Baja</button>
-        <?php
-          echo form_close();
-        ?>
-        </td>
-                  </tr>
-                  <?php
-        $indice++;
-        }
-        ?>
+	h1 {
+		color: #444;
+		background-color: transparent;
+		border-bottom: 1px solid #D0D0D0;
+		font-size: 19px;
+		font-weight: normal;
+		margin: 0 0 14px 0;
+		padding: 14px 15px 10px 15px;
+	}
 
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>No.</th>
-                    <th>Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Sexo</th>
-                    <th>Estado</th>
-                    <th>Cedula</th>  
-                    <th>Usuario</th>   
-                    <th>Rol</th> 
-                    <th>Fecha Ingreso</th>  
-                    <th>Dar de alta</th> 
-                    <th>Dar de baja</th>  
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-           <!-- /.card -->
-              </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
+	code {
+		font-family: Consolas, Monaco, Courier New, Courier, monospace;
+		font-size: 12px;
+		background-color: #f9f9f9;
+		border: 1px solid #D0D0D0;
+		color: #002166;
+		display: block;
+		margin: 14px 0 14px 0;
+		padding: 12px 10px 12px 10px;
+	}
+
+	#body {
+		margin: 0 15px 0 15px;
+	}
+
+	p.footer {
+		text-align: right;
+		font-size: 11px;
+		border-top: 1px solid #D0D0D0;
+		line-height: 32px;
+		padding: 0 10px 0 10px;
+		margin: 20px 0 0 0;
+	}
+
+	#container {
+		margin: 10px;
+		border: 1px solid #D0D0D0;
+		box-shadow: 0 0 8px #D0D0D0;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<h1>Welcome to CodeIgniter!</h1>
+
+	<div id="body">
+		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+
+		<p>If you would like to edit this page you'll find it located at:</p>
+		<code>application/views/welcome_message.php</code>
+
+		<p>The corresponding controller for this page is found at:</p>
+		<code>application/controllers/Welcome.php</code>
+
+		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+	</div>
+
+	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+</div>
+
+</body>
+</html>

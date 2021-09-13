@@ -1,14 +1,12 @@
 <?php
 function formatearFecha($fecha)
 {
-    $dia=substr($fecha,8,2);
-    $mes=substr($fecha,5,2);
-    $anio=substr($fecha,0,4);
-    $hora=substr($fecha,11,5);
-    $fechaformateada=$dia."/".$mes."/".$anio."/".$hora;
-    return $fechaformateada;
+    $dia = substr($fecha, 8, 2);
+    $mes = substr($fecha, 5, 2);
+    $anio = substr($fecha, 0, 4);
+    $fechaFormateada = $anio . "-" . $mes . "-" . $dia;
+    return $fechaFormateada;
 }
-
 function UsuarioPassword($Cedula,$nombre,$Apaterno,$Amaterno)
 {
     $inicial1=substr($nombre,0,1);
