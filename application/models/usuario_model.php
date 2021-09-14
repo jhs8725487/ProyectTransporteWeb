@@ -35,10 +35,17 @@ class Usuario_model extends CI_ModeL {
         }
 
     public function modificarUsuario($idUsuario,$data)
-        {
-        $this->db->where('idUsuario',$idUsuario);
-        $this->db->update('usuarios',$data);
-        }
+    {
+            $this->db->where('idUsuario',$idUsuario);
+            $this->db->update('usuarios',$data);
+    }
+    public function validarid($username)
+	{
+			$this->db->select('*');
+			$this->db->from('usuarios');
+			$this->db->where('usu_usuario', $username);
+			return $this->db->get();
+	}
 
 
         

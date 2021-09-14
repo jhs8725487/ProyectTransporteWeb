@@ -18,12 +18,13 @@ class Usuarios extends CI_Controller {
     }
     public function testAdmin()
     {
+        $data2['msg'] = $this->uri->segment(3);
         $data['infoUsuarios'] = $this->usuario_model->lista();
         $this->load->view('incrustaciones/head');
         $this->load->view('incrustaciones/menu-topnav');
         $this->load->view('incrustaciones/menu-sidenav');
         $this->load->view('usuarios/usuarios_view', $data);
-        $this->load->view('incrustaciones/footer');
+        $this->load->view('incrustaciones/footer', $data2);
     }
     Public function listapdf()
     {
@@ -138,17 +139,26 @@ class Usuarios extends CI_Controller {
 
         }
 	}
+  
     public function agregarbd(){
+        
         $username=UsuarioPassword($_POST['Telefono'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
-		$data['Nombre']=$_POST['Nombre'];
-		$data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
-		$data['ApellidoMaterno']=$_POST['ApellidoMaterno'];
-		$data['Sexo']=$_POST['Sexo'];
-		$data['Telefono']=$_POST['Telefono'];
-		$data['Rol']=$_POST['Rol'];
-        $data['Correo']=$_POST['Correo'];
-        $data['usu_password']=md5($username);
-		$this->usuario_model->agregarUsuario($data);
+        $Consulta = $this->usuario_model->validarid($username);
+        if($Consulta->num_rows()>0){
+           redirect('usuarios/testAdmin/1','refresh');
+        }else{
+            $data['Nombre']=$_POST['Nombre'];
+            $data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
+            $data['ApellidoMaterno']=$_POST['ApellidoMaterno'];
+            $data['Sexo']=$_POST['Sexo'];
+            $data['Telefono']=$_POST['Telefono'];
+            $data['Rol']=$_POST['Rol'];
+            $data['Correo']=$_POST['Correo'];
+            $data['usu_usuario']=$username;
+            $data['usu_password']=md5($username);
+            $this->usuario_model->agregarUsuario($data);
+        }
+
 		redirect('usuarios/testAdmin','refresh');
 	}
 

@@ -1,8 +1,79 @@
+<script> src="https://code.jquery.com/jquery-3.6.0.min.js"</script>
+
+<script src="<?php echo base_url(); ?>adminmart/assets/libs/jquery/dist/jquery-3.6.0.min.js"></script>
+<?php
+switch ($msg) {
+    case '1':
+?>
+     
+        <script>
+            (function(){
+                $(function(){
+                    $('#insertarUsuario').modal()
+                });
+            }());
+        </script>
+
+<script>
+        function miFuncion() {
+          Swal.fire({
+            icon: "error",
+            title: 'OCURRIO ALGO!',
+            text: 'NO SE PUEDE REGISTRAR AL USUARIO 2 VECES.',
+            //timer: 2000,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        }
+        window.onload = miFuncion;
+        history.pushState(null, "", "");
+      </script>
+      
+<?php  
+    break;
+    case '0':
+?>
+  
+
+<script>
+        function miFuncion() {
+          Swal.fire({
+                icon: 'success',
+                title: 'BIEN HECHO',
+                text:   'REGISTRO EXITOSO.',
+                showConfirmButton: true,
+            //timer: 2000,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        }
+        window.onload = miFuncion;
+        history.pushState(null, "", "");
+      </script>
+
+<?php
+
+    break;
+    default:
+    break;
+}
+?>
+
+
 <!-- ============================================================== -->
 <!-- footer -->
 <!-- ============================================================== -->
 <footer class="footer text-center text-muted">
     All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+  
 </footer>
 <!-- ============================================================== -->
 <!-- End footer -->
@@ -65,7 +136,9 @@
 <script src="<?php echo base_url(); ?>adminmart/dist/js/pages/datatable/datatable-basic.init.js"></script>
 <!-- This Page JS -->
 <script src="<?php echo base_url(); ?>adminmart/assets/extra-libs/prism/prism.js"></script>
+<!-- SWEETALERT -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
 <!-- jQuery, Popper.js, Bootstrap JS 
 
 <script src="<?php echo base_url(); ?>datatable/popper/popper.min.js"></script>

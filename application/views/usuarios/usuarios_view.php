@@ -1,3 +1,5 @@
+
+               
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
@@ -39,7 +41,6 @@
                         <!--<div float="left">-->
                         <h4 class="card-title" style="text-align: center; font-size:30px; font-weight: bold">ADMINISTRACION DE USUARIOS</h4>
                         </div>
-                        
                         <span class="float-left" data-toggle="tooltip" data-placement="top" title="Nuevo Usuario" >
                             <button type="button" style="color :white; background: #D0333A" class="btn float-left" data-toggle="modal" data-target="#insertarUsuario">
                             <i class="fas fa-plus"></i> Insertar nuevo Usuario
@@ -218,6 +219,8 @@
 </div>
 
 
+
+                        
           <!-- MODAL PARA INSERTAR -->
         <div class="modal fade" id="insertarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
