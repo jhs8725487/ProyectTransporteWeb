@@ -26,6 +26,7 @@ class Usuarios extends CI_Controller {
         $this->load->view('usuarios/usuarios_view', $data);
         $this->load->view('incrustaciones/footer', $data2);
     }
+   
     Public function listapdf()
     {
         $lista=$this->usuario_model->lista();
@@ -158,8 +159,42 @@ class Usuarios extends CI_Controller {
             $data['usu_password']=md5($username);
             $this->usuario_model->agregarUsuario($data);
         }
+        $this->load->library("email");
 
-		redirect('usuarios/testAdmin','refresh');
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '60';
+    
+        $config['smtp_user']    = 'jhericoo8322@gmail.com';    //Important
+        $config['smtp_pass']    = 'damepose003';  //Important
+    
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'html'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not 
+        //Establecemos esta configuración
+        $this->email->initialize($config);
+
+        
+        $correo=$_POST['Correo'];
+        
+        //$from_email="jhericoo8322@gmail.com";
+        //$to_email="simoneaquino8322@gmail.com";
+        $this->email->from('jhericoo8322@gmail.com','Joel Herrera');
+        $this->email->to('simoneaquino8322@gmail.com','Simone Aquino');
+        $this->email->to($correo,'Simone Aquino');
+        $this->email->subject("Cuenta de usuario");
+        //$this->email->message("Test Message");
+        $this->email->message("Tu usuario es: ".$username." y tu  contraseña es: ".$username);
+        if($this->email->send()){
+            //$this->session->set_flashdata('envio','Email enviado correctamente');
+            $this->session->set_flashdata('envio','La cuenta de acceso se ha enviado al email');
+        }else{
+            $this->session->set_flashdata('envio','No se a enviado el email');
+        }
+		//redirect('usuarios/testAdmin','refresh');
+        redirect('usuarios/testAdmin/0','refresh');
 	}
 
 	public function agregar(){

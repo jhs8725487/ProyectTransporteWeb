@@ -20,7 +20,6 @@ switch ($msg) {
             icon: "error",
             title: 'OCURRIO ALGO!',
             text: 'NO SE PUEDE REGISTRAR AL USUARIO 2 VECES.',
-            //timer: 2000,
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
@@ -44,9 +43,8 @@ switch ($msg) {
           Swal.fire({
                 icon: 'success',
                 title: 'BIEN HECHO',
-                text:   'REGISTRO EXITOSO.',
+                text:   'REGISTRO EXITOSO. <?php echo $this->session->flashdata('envio') ?>',
                 showConfirmButton: true,
-            //timer: 2000,
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },

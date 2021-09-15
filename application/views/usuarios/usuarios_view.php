@@ -40,6 +40,11 @@
                     <div class="card-body" >
                         <!--<div float="left">-->
                         <h4 class="card-title" style="text-align: center; font-size:30px; font-weight: bold">ADMINISTRACION DE USUARIOS</h4>
+                        <!--<?php
+                        //if($this->session->flashdata('envio')){
+                        //echo $this->session->flashdata('envio');
+                        //}
+                        ?>-->
                         </div>
                         <span class="float-left" data-toggle="tooltip" data-placement="top" title="Nuevo Usuario" >
                             <button type="button" style="color :white; background: #D0333A" class="btn float-left" data-toggle="modal" data-target="#insertarUsuario">
