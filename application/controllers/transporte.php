@@ -4,15 +4,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Transporte extends CI_Controller {
 
     
+   
+
+   
     public function test()
     {
-
         $data['infoTransportes'] = $this->transporte_model->lista();
-        $this->load->view('incrustaciones/head');
-        $this->load->view('incrustaciones/menu-topnav');
-        $this->load->view('incrustaciones/menu-sidenav');
-        $this->load->view('transportes/transportes_view', $data);
-        $this->load->view('incrustaciones/footer');
+        if($this->session->userdata('Rol')=='Administrador'){
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('transportes/transportes_view', $data);
+            $this->load->view('incrustaciones/footer2');
+        }else{
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('transportes/transportes_view2', $data);
+            $this->load->view('incrustaciones/footer2');
+        }
+ 
     }
      Public function listapdf()
     {

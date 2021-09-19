@@ -6,25 +6,25 @@ class Usuarios extends CI_Controller {
 
 
 
-    public function test()
-    {
-
-        $data['infoUsuarios'] = $this->usuario_model->lista();
-        $this->load->view('incrustaciones/head');
-        $this->load->view('incrustaciones/menu-topnav');
-        $this->load->view('incrustaciones/menu-sidenav');
-        $this->load->view('usuarios/usuarios_view2', $data);
-        $this->load->view('incrustaciones/footer');
-    }
     public function testAdmin()
     {
-        $data2['msg'] = $this->uri->segment(3);
-        $data['infoUsuarios'] = $this->usuario_model->lista();
-        $this->load->view('incrustaciones/head');
-        $this->load->view('incrustaciones/menu-topnav');
-        $this->load->view('incrustaciones/menu-sidenav');
-        $this->load->view('usuarios/usuarios_view', $data);
-        $this->load->view('incrustaciones/footer', $data2);
+        if($this->session->userdata('Rol')=='Administrador'){
+            $data2['msg'] = $this->uri->segment(3);
+            $data['infoUsuarios'] = $this->usuario_model->lista();
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('usuarios/usuarios_view', $data);
+            $this->load->view('incrustaciones/footer', $data2);
+        }else{
+            $data2['msg'] = $this->uri->segment(3);
+            $data['infoUsuarios'] = $this->usuario_model->lista();
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('usuarios/usuarios_view2', $data);
+            $this->load->view('incrustaciones/footer', $data2);
+        }
     }
    
     Public function listapdf()
@@ -234,7 +234,7 @@ class Usuarios extends CI_Controller {
             }
             else
             {
-                redirect('usuarios/test','refresh');
+                redirect('usuarios/testAdmin','refresh');
             }
         }
         else{

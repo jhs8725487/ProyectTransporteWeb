@@ -240,7 +240,8 @@
                         <form action="<?php echo base_url(); ?>index.php/usuarios/agregarbd" method="post" class="needs-validation" autocomplete="off" novalidate>
                             <div class="mb-3">
                                 <label for="">Nombre:</label>
-                                <input type="text" class="form-control text-uppercase" name="Nombre" data-toggle="tooltip" data-placement="left" title="Nombre del Usuario" placeholder="Nombre del Usuario" required>
+                                <input type="text" class="form-control text-uppercase" name="Nombre" data-toggle="tooltip" 
+                                    data-placement="left" title="Nombre del Usuario" placeholder="Nombre del Usuario" required>
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">Es necesario el nombre del Usuario.</div>
                             </div>
@@ -248,15 +249,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                             <label for="">Apellido Paterno:</label>
-                                            <input type="text" class="form-control text-uppercase" name="ApellidoPaterno" data-toggle="tooltip" data-placement="left" title="Apellidos" placeholder="Apellido paterno" required>
+                                            <input type="text" class="form-control text-uppercase" name="ApellidoPaterno" 
+                                                data-toggle="tooltip" data-placement="left" title="Apellidos" placeholder="Apellido paterno" required>
                                         <div class="valid-feedback">OK.</div>
                                         <div class="invalid-feedback">Es necesario el apellido paterno.</div>
                                     </div>
                                       <div class="col-md-6">
                                             <label for="">Apellido Materno:</label>
-                                            <input type="text" class="form-control text-uppercase" name="ApellidoMaterno" data-toggle="tooltip" data-placement="left" title="Apellidos" placeholder="Apellido paterno">
+                                            <input type="text" class="form-control text-uppercase" name="ApellidoMaterno" data-toggle="tooltip" 
+                                                data-placement="left" title="Apellidos" placeholder="Apellido paterno">
                                         <div class="valid-feedback">OK.</div>
-                                        <div class="invalid-feedback">Es necesario el apellido paterno.</div>
+                                        <div class="invalid-feedback">Es necesario el apellido materno.</div>
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +279,7 @@
                                         <label for="">Correo:</label>
                                         <input type="text-uppercase" class="form-control text-uppercase" name="Correo" data-toggle="tooltip" data-placement="left" title="Dirección" placeholder="Correo" required>
                                         <div class="valid-feedback">OK.</div>
-                                         <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
+                                         <div class="invalid-feedback">Es necesario el correo electronico.</div>
                                     </div>
                                 </div>
                             </div>

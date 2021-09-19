@@ -7,7 +7,7 @@ class Conductor_model extends CI_ModeL {
     public function lista()
     {
         $this->db->select('*');
-        $this->db->from('conductores');
+        $this->db->from('vwconductores');
         return $this->db->get();
     }
 

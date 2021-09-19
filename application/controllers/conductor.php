@@ -11,7 +11,7 @@ class Conductor extends CI_Controller {
         $this->load->view('incrustaciones/menu-topnav');
         $this->load->view('incrustaciones/menu-sidenav');
         $this->load->view('conductores/conductores_view', $data);
-        $this->load->view('incrustaciones/footer');
+        $this->load->view('incrustaciones/footer2');
     }
 
     public function modificar(){

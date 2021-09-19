@@ -44,7 +44,7 @@
                                 echo form_open_multipart('conductor/agregar');
                                 ?>
                                 <span class="float-right" data-toggle="tooltip" data-placement="top" title="Nuevo conductor">
-                                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#insertarConductor">
+                                    <button type="button" style="color :white; background: #D0333A" class="btn btn-primary float-right" data-toggle="modal" data-target="#insertarConductor">
                                     <i class="fas fa-plus"></i> Insertar nuevo conductor
                                     </button>
                                 </span>
@@ -61,16 +61,15 @@
                                         <th>Nombre</th>
                                         <th>Primer Apellido</th>
                                         <th>Segundo Apellido</th>
-                                        <th>Fecha Nacimiento</th>
-                                        <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Estado</th>   
-                                        <th>Telefono</th> 
-                                        <th>Correo</th> 
-                                        <th>Fecha Ingreso</th>  
-                                        <th>Fecha Actualizacion</th>  
+                                        <th>Categoria</th>
+                                        <th>FechaNacimiento</th>
+                                        <th>Expedido</th> 
+                                        <th>Estado</th> 
+                                        <th>FechaIngreso</th>   
+                                        <th>FechaActualizacion</th> 
+                                        <th>foto</th> 
                                         <th>Acciones</th>
-
+                                        <th>Subir</th>
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -83,14 +82,44 @@
                                             <td><?php echo $row->Nombre; ?></td>
                                             <td><?php echo $row->ApellidoPaterno; ?></td>
                                             <td><?php echo $row->ApellidoMaterno; ?></td>
+                                            <td><?php echo $row->Categoria; ?></td>
                                             <td><?php echo $row->FechaNacimiento; ?></td>
-                                            <td><?php echo $row->Sexo; ?></td>
-                                            <td><?php echo $row->Cedula; ?></td>
-                                            <td><?php echo $row->Estado; ?></td>
-                                            <td><?php echo $row->Telefono; ?></td>
-                                            <td><?php echo $row->Correo; ?></td>
+                                            <td><?php echo $row->Expedido; ?></td>
+                                            <td>
+                                                <?php
+                                                if ($row->Estado == '1') {
+                                                ?>
+                                                   <span class="badge bg-success text-white">HABILITADO</span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <span class="badge bg-danger text-white" >DESHABILITADO</span>
+                                                        <?php
+                                                    }
+                                                        ?>
+                                            </td>
                                             <td><?php echo $row->FechaIngreso; ?></td>
                                             <td><?php echo $row->FechaActualizacion; ?></td>
+                                            <td>
+                                              <?php
+                                              $foto=$row->foto;
+                                              if($foto==""){
+                                                //mostrar imagen por defecto
+                                                ?>
+                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/perfil.jpg" alt="">
+
+                                                <?php
+
+                                               
+                                              }else{
+                                                //mostrar la foto del usuario
+                                                ?>
+                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/<?php echo $foto; ?>" alt="">
+                                                <?php
+
+                                              }
+                                              ?>
+                                            </td>
                                      <td>
                                                 <div class="row">
                                                     <div class="col-md-6 col-6">
@@ -126,6 +155,16 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td>
+                                            <?php
+                                            echo form_open_multipart('conductor/subirfoto');
+                                            ?>
+                                            <input type="hidden" name="idConductor" value="<?php echo $row->idConductor; ?>">
+                                            <button type="submit" class="btn btn-primary btn-xs">Subir</button>
+                                            <?php
+                                            echo form_close();
+                                            ?>
+                                                                </td>
                                         </tr>
                                     <?php
                                     $num++;
@@ -140,15 +179,15 @@
                                         <th>Nombre</th>
                                         <th>Primer Apellido</th>
                                         <th>Segundo Apellido</th>
-                                        <th>Fecha Nacimiento</th>
-                                        <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Estado</th>   
-                                        <th>Telefono</th> 
-                                        <th>Correo</th> 
-                                        <th>Fecha Ingreso</th>  
-                                        <th>Fecha Actualizacion</th>  
+                                        <th>Categoria</th>
+                                        <th>FechaNacimiento</th>
+                                        <th>Expedido</th> 
+                                        <th>Estado</th> 
+                                        <th>FechaIngreso</th>   
+                                        <th>FechaActualizacion</th> 
+                                        <th>foto</th> 
                                         <th>Acciones</th>
+                                        <th>Subir</th>
                                     </tr>
                                 </tfoot>
                             </table>

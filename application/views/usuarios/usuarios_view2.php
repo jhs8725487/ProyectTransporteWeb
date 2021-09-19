@@ -1,3 +1,5 @@
+
+               
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
@@ -36,32 +38,35 @@
             <div class="col-12">
                 <div class="card" >
                     <div class="card-body" >
+                        <!--<div float="left">-->
                         <h4 class="card-title" style="text-align: center; font-size:30px; font-weight: bold">ADMINISTRACION DE USUARIOS</h4>
+                        <!--<?php
+                        //if($this->session->flashdata('envio')){
+                        //echo $this->session->flashdata('envio');
+                        //}
+                        ?>-->
                         </div>
-                        <div class="table-responsive">
-                        <span class="float-left" data-toggle="tooltip" data-placement="top" title="Nuevo Usuario" >
-                            <button type="button" style="color :white; background: #D0333A" class="btn float-left" data-toggle="modal" data-target="#insertarUsuario">
-                            <i class="fas fa-plus"></i> Insertar nuevo Usuario
-                            </button>
+                          <span class="float-left" data-toggle="tooltip" data-placement="top" title="Exportar PDF" >
+                        <a target="_blank" href="<?php echo base_url(); ?>index.php/usuarios/listapdf">
+                            <button class="btn btn-success btn float-right">Exportar </button>
+                        </a>
                         </span>
-                        <br><br>
-                        <span class="float-right">
+                       <!-- <span class="float-right">
                               <?php 
-                                echo date('Y/m/d H:i:s');
+                               // echo date('Y/m/d H:i:s');
                                 ?>
                                 <?php
-                                echo form_open_multipart('usuarios/agregar');
+                                //echo form_open_multipart('usuarios/agregar');
                                 ?>
                        
                                 <?php
-                                echo form_close();
+                                //echo form_close();
                                 ?>
-                        </span>
-                              
-                            <table id="example"  class="table table-striped table-bordered no-wrap table-hover table-dark table-sm mb-0" cellspacing="0" width="100%" >
-
-                                <thead >
-                                    <tr >     
+                        </span>-->
+                        <div class="table-responsive">
+                            <table id="example" class="table-striped table-primary table-sm mb-3" cellspacing="0" width="100%">
+                            <thead class="bg-danger text-white">
+                                <tr>   
                                         <th>No.</th>
                                         <th>Nombre</th>
                                         <th>Apellido paterno</th>
@@ -69,13 +74,12 @@
                                         <th>Sexo</th>
                                         <th>Cedula</th> 
                                         <th>Rol</th>
-                                        <th>foto</th>
+                                        <th>Foto</th>
                                         <th>Correo</th>
                                         <th>password</th> 
-                                        <th >Estado</th>   
+                                        <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -117,19 +121,20 @@
                                                 <?php
                                                 if ($row->Estado == '1') {
                                                 ?>
-                                                   <span class="text-whote">HABILITADO</span>
+                                                   <span class="badge bg-success text-white">HABILITADO</span>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                        <span class="bg-danger text-white"" >DESHABILITADO</span>
+                                                        <span class="badge bg-danger text-white" >DESHABILITADO</span>
                                                         <?php
                                                     }
                                                         ?>
                                             </td>
-                                            <td ><?php echo $row->FechaRegistro; ?></td>
-                                             <td><?php echo $row->FechaActualizacion; ?></td>
-                                      
-                                                                <td>
+                                            <td ><?php echo formatearFecha($row->FechaRegistro); ?></td>
+                                             <td><?php echo formatearFecha($row->FechaActualizacion); ?></td>
+                                        
+                                     
+                                                                      
                                         </tr>
                                     <?php
                                     $num++;
@@ -137,7 +142,7 @@
 
                                     ?>
                                 </tbody>
-                                <tfoot>
+                                <tfoot class="bg-primary text-white">
                                     <tr>
                                         <th>No.</th>
                                         <th>Nombre</th>
@@ -146,7 +151,7 @@
                                         <th>Sexo</th>
                                         <th>Cedula</th> 
                                         <th>Rol</th>
-                                        <th>foto</th>
+                                        <th>Foto</th>
                                         <th>Correo</th>
                                         <th>password</th> 
                                         <th>Estado</th>   
@@ -156,11 +161,16 @@
                                 </tfoot>
                             </table>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
+
+                        
           <!-- MODAL PARA INSERTAR -->
         <div class="modal fade" id="insertarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -191,7 +201,7 @@
                                             <label for="">Apellido Materno:</label>
                                             <input type="text" class="form-control text-uppercase" name="ApellidoMaterno" data-toggle="tooltip" data-placement="left" title="Apellidos" placeholder="Apellido paterno">
                                         <div class="valid-feedback">OK.</div>
-                                        <div class="invalid-feedback">Es necesario el apellido paterno.</div>
+                                        <div class="invalid-feedback">Es necesario el apellido materno.</div>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +221,7 @@
                                         <label for="">Correo:</label>
                                         <input type="text-uppercase" class="form-control text-uppercase" name="Correo" data-toggle="tooltip" data-placement="left" title="Dirección" placeholder="Correo" required>
                                         <div class="valid-feedback">OK.</div>
-                                         <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
+                                         <div class="invalid-feedback">Es necesario el correo electronico.</div>
                                     </div>
                                 </div>
                             </div>
@@ -233,10 +243,10 @@
                                              <label for="">Rol:</label>
                                         <select class="form-control" name="Rol" data-toggle="tooltip" data-placement="left" title="Sexo" required>
                                             <option value selected>Seleccionar</option>
-                                                <option value="F">SUPERVISOR</option>
-                                                 <option value="F">ADMINISTRADOR</option>
-                                                <option value="M">CONDUCTOR</option>
-                                                <option value="M">CLIENTE</option>
+                                                <option value="Supervisor">SUPERVISOR</option>
+                                                 <option value="Administrador">ADMINISTRADOR</option>
+                                                <option value="Coductor">CONDUCTOR</option>
+                                                <option value="Cliente">CLIENTE</option>
                                         </select>
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario seleccionar una opcion.</div>
@@ -336,9 +346,9 @@
                                <div class="col-md-6">
                                              <label for="">Rol:</label>
                                         <select class="form-control" name="Rol" data-toggle="tooltip" data-placement="left" title="Rol" required>
-                                                <option value="SUPERVISOR">SUPERVISOR</option>
-                                                <option value="CONDUCTOR">CONDUCTOR</option>
-                                                <option value="CLIENTE">CLIENTE</option>
+                                                <option value="Supervisor">SUPERVISOR</option>
+                                                <option value="Conductor">CONDUCTOR</option>
+                                                <option value="Cliente">CLIENTE</option>
                                         </select>
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario seleccionar una opcion.</div>

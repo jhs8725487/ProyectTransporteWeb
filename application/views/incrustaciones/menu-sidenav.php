@@ -11,8 +11,7 @@
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu"   >Linea de transporte</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="<?php echo base_url(); ?>index.php/institutos/indexadmin" aria-expanded="false"><i class="fas fa-university"></i><span class="hide-menu"   >Conductores</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link" href="<?php echo base_url(); ?>index.php/usuarioss/privadas" aria-expanded="false"><i class="fas fa-university"></i><span class="hide-menu"  >Clientes</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="<?php echo base_url(); ?>index.php/conductor/test" aria-expanded="false"><i class="fas fa-university"></i><span class="hide-menu"   >Conductores</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="<?php echo base_url(); ?>index.php/transporte/test" aria-expanded="false"><i class="fas fa-university"></i><span class="hide-menu"   >Transportes</span></a></li>
                         <li class="sidebar-item" > <a class="sidebar-link sidebar-link"  href="<?php echo base_url(); ?>index.php/usuarios/testAdmin" aria-expanded="false"><i class="fas fa-university"></i><span class="hide-menu"    >Usuarios</span></a></li>
 
