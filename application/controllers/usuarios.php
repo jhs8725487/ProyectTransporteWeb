@@ -256,6 +256,7 @@ class Usuarios extends CI_Controller {
 	}
     
 	public function modificarbd(){
+        $username=UsuarioPassword($_POST['Telefono'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
         $passname=$_POST['usu_password'];
 		$idUsuario=$_POST['idUsuario'];
 		$data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
@@ -265,6 +266,7 @@ class Usuarios extends CI_Controller {
         $data['Telefono']=$_POST['Telefono'];
         $data['Rol']=$_POST['Rol'];
         $data['Correo']=$_POST['Correo'];
+        $data['usu_usuario']=$username;
         $data['usu_password']=md5($passname);
         $file=$_POST['userfile'];
         if($file!=""){

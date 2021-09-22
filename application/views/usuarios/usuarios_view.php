@@ -83,6 +83,7 @@
                                         <th>Rol</th>
                                         <th>Foto</th>
                                         <th>Correo</th>
+                                        <th>usuario</th> 
                                         <th>password</th> 
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
@@ -126,6 +127,7 @@
                                               ?>
                                             </td>
                                             <td><?php echo $row->Correo; ?></td>
+                                            <td><?php echo $row->usu_usuario?></td>
                                             <td><?php echo $row->usu_password; ?></td>
                                             <td>
                                                 <?php
@@ -206,6 +208,7 @@
                                         <th>Rol</th>
                                         <th>Foto</th>
                                         <th>Correo</th>
+                                        <th>usuario</th> 
                                         <th>password</th> 
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  

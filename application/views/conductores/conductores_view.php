@@ -64,10 +64,10 @@
                                         <th>Categoria</th>
                                         <th>FechaNacimiento</th>
                                         <th>Expedido</th> 
+                                        <th>foto</th> 
                                         <th>Estado</th> 
                                         <th>FechaIngreso</th>   
                                         <th>FechaActualizacion</th> 
-                                        <th>foto</th> 
                                         <th>Acciones</th>
                                         <th>Subir</th>
                                     </tr>
@@ -85,21 +85,6 @@
                                             <td><?php echo $row->Categoria; ?></td>
                                             <td><?php echo $row->FechaNacimiento; ?></td>
                                             <td><?php echo $row->Expedido; ?></td>
-                                            <td>
-                                                <?php
-                                                if ($row->Estado == '1') {
-                                                ?>
-                                                   <span class="badge bg-success text-white">HABILITADO</span>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                        <span class="badge bg-danger text-white" >DESHABILITADO</span>
-                                                        <?php
-                                                    }
-                                                        ?>
-                                            </td>
-                                            <td><?php echo $row->FechaIngreso; ?></td>
-                                            <td><?php echo $row->FechaActualizacion; ?></td>
                                             <td>
                                               <?php
                                               $foto=$row->foto;
@@ -120,12 +105,28 @@
                                               }
                                               ?>
                                             </td>
+                                            <td>
+                                                <?php
+                                                if ($row->Estado == '1') {
+                                                ?>
+                                                   <span class="badge bg-success text-white">HABILITADO</span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <span class="badge bg-danger text-white" >DESHABILITADO</span>
+                                                        <?php
+                                                    }
+                                                        ?>
+                                            </td>
+                                            <td><?php echo $row->FechaIngreso; ?></td>
+                                            <td><?php echo $row->FechaActualizacion; ?></td>
+                               
                                      <td>
                                                 <div class="row">
                                                     <div class="col-md-6 col-6">
                                                         <!--<button class="btn btn-block btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></button>-->
                                                         <span data-toggle="tooltip" data-placement="top" title="Editar">
-                                                            <button type="button" class="btn btn-block btn-sm btn-warning" data-toggle="modal" data-target="#editarConductor<?php echo $row->idConductor; ?>">
+                                                            <button type="button" class="btn btn-block btn-sm btn-info" data-toggle="modal" data-target="#editarConductor<?php echo $row->idConductor; ?>">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
                                                         </span>
@@ -182,10 +183,10 @@
                                         <th>Categoria</th>
                                         <th>FechaNacimiento</th>
                                         <th>Expedido</th> 
+                                        <th>foto</th> 
                                         <th>Estado</th> 
                                         <th>FechaIngreso</th>   
                                         <th>FechaActualizacion</th> 
-                                        <th>foto</th> 
                                         <th>Acciones</th>
                                         <th>Subir</th>
                                     </tr>
