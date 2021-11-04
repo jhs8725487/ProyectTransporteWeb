@@ -35,22 +35,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">CONDUCTORES DE LA LINEA 111</h4>
+                        <h4 class="card-title" style="text-align: center; font-size:30px; font-weight: bold">ADMINISTRACION DE CONDUCTORES</h4>
                         <div class="table-responsive">
                               <?php 
                                 echo date('Y/m/d H:i:s');
                                 ?>
-                                <?php
-                                echo form_open_multipart('conductor/agregar');
-                                ?>
-                                <span class="float-right" data-toggle="tooltip" data-placement="top" title="Nuevo conductor">
-                                    <button type="button" style="color :white; background: #D0333A" class="btn btn-primary float-right" data-toggle="modal" data-target="#insertarConductor">
-                                    <i class="fas fa-plus"></i> Insertar nuevo conductor
-                                    </button>
-                                </span>
-                                <?php
-                                echo form_close();
-                                ?>
+                            
                                 <br/>
                               
                             <table id="example" class="table table-striped table-bordered no-wrap table-hover table-primary table-sm mb-0" cellspacing="0" width="100%">
@@ -67,9 +57,7 @@
                                         <th>Estado</th> 
                                         <th>FechaIngreso</th>   
                                         <th>FechaActualizacion</th> 
-                                        <th>foto</th> 
                                         <th>Acciones</th>
-                                        <th>Subir</th>
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -100,71 +88,22 @@
                                             </td>
                                             <td><?php echo $row->FechaIngreso; ?></td>
                                             <td><?php echo $row->FechaActualizacion; ?></td>
-                                            <td>
-                                              <?php
-                                              $foto=$row->foto;
-                                              if($foto==""){
-                                                //mostrar imagen por defecto
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/perfil.jpg" alt="">
-
-                                                <?php
-
-                                               
-                                              }else{
-                                                //mostrar la foto del usuario
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/<?php echo $foto; ?>" alt="">
-                                                <?php
-
-                                              }
-                                              ?>
-                                            </td>
-                                     <td>
-                                                <div class="row">
-                                                    <div class="col-md-6 col-6">
-                                                        <!--<button class="btn btn-block btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></button>-->
-                                                        <span data-toggle="tooltip" data-placement="top" title="Editar">
-                                                            <button type="button" class="btn btn-block btn-sm btn-warning" data-toggle="modal" data-target="#editarConductor<?php echo $row->idConductor; ?>">
-                                                                <i class="fas fa-edit"></i>
-                                                            </button>
+                                        
+                                      <td>
+                                                <div class="row" style="padding: 15px;">
+                                                    <div class="col-md-12">
+                                                        <span data-toggle="tooltip" data-placement="top" title="Ver más">
+                                                            <form action="<?php echo base_url(); ?>index.php/conductor/mas" method="get">
+                                                                <input type="hidden" name="key" value="<?php echo $row->idConductor; ?>">
+                                                                <button type="submit" class="btn btn-block btn-sm btn-success">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </button>
+                                                            </form>
                                                         </span>
-                                                    </div>
-                                                    <div class="col-md-6 col-6">
-                                                        <?php
-                                                        if ($row->Estado == "1") {
-                                                        ?>
-                                                            <!--<button class="btn btn-block btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>-->
-                                                            <span data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <button type="button" class="btn btn-block btn-sm btn-danger" data-toggle="modal" data-target="#eliminarConductor<?php echo $row->idConductor; ?>">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </button>
-                                                            </span>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <!--<button class="btn btn-block btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Restaurar"><i class="fas fa-trash-restore"></i></button>-->
-                                                            <span data-toggle="tooltip" data-placement="top" title="Restaurar">
-                                                                <button type="button" class="btn btn-block btn-sm btn-success" data-toggle="modal" data-target="#restaurarConductor<?php echo $row->idConductor; ?>">
-                                                                    <i class="fas fa-trash-restore"></i>
-                                                                </button>
-                                                            </span>
-                                                        <?php
-                                                        }
-                                                        ?>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                            <?php
-                                            echo form_open_multipart('conductor/subirfoto');
-                                            ?>
-                                            <input type="hidden" name="idConductor" value="<?php echo $row->idConductor; ?>">
-                                            <button type="submit" class="btn btn-primary btn-xs">Subir</button>
-                                            <?php
-                                            echo form_close();
-                                            ?>
-                                                                </td>
+                                    
                                         </tr>
                                     <?php
                                     $num++;
@@ -174,7 +113,6 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        
                                         <th>No.</th>
                                         <th>Nombre</th>
                                         <th>Primer Apellido</th>
@@ -185,9 +123,7 @@
                                         <th>Estado</th> 
                                         <th>FechaIngreso</th>   
                                         <th>FechaActualizacion</th> 
-                                        <th>foto</th> 
                                         <th>Acciones</th>
-                                        <th>Subir</th>
                                     </tr>
                                 </tfoot>
                             </table>

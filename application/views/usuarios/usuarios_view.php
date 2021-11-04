@@ -79,16 +79,15 @@
                                         <th>Apellido paterno</th>
                                         <th>Apellido materno</th>
                                         <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Rol</th>
-                                        <th>Foto</th>
+                                        <th>Telefono</th> 
+                                        <th>Cedula</th>
                                         <th>Correo</th>
-                                        <th>password</th> 
+                                        <th>Usuario</th>
+                                        <th>Rol</th> 
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  
                                         <th>Actualizar-Eliminar</th>
-                                        <th>Subir</th>
 
                                     </tr>
                                 </thead>
@@ -104,29 +103,10 @@
                                             <td><?php echo $row->ApellidoMaterno; ?></td>
                                             <td><?php echo $row->Sexo; ?></td>
                                             <td><?php echo $row->Telefono; ?></td>
-                                            <td><?php echo $row->Rol; ?></td>
-                                            <td>
-                                              <?php
-                                              $foto=$row->foto;
-                                              if($foto==""){
-                                                //mostrar imagen por defecto
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/perfil.jpg" alt="">
-
-                                                <?php
-
-                                               
-                                              }else{
-                                                //mostrar la foto del usuario
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/<?php echo $foto; ?>" alt="">
-                                                <?php
-
-                                              }
-                                              ?>
-                                            </td>
+                                            <td><?php echo $row->Cedula; ?></td>
                                             <td><?php echo $row->Correo; ?></td>
-                                            <td><?php echo $row->usu_password; ?></td>
+                                             <td><?php echo $row->usu_usuario; ?></td>
+                                            <td><?php echo $row->Rol; ?></td>
                                             <td>
                                                 <?php
                                                 if ($row->Estado == '1') {
@@ -177,16 +157,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                            <?php
-                                            echo form_open_multipart('usuarios/subirfoto');
-                                            ?>
-                                            <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario; ?>">
-                                            <button type="submit" class="btn btn-primary btn-xs">Subir</button>
-                                            <?php
-                                            echo form_close();
-                                            ?>
-                                                                </td>
                                                                       
                                         </tr>
                                     <?php
@@ -197,21 +167,20 @@
                                 </tbody>
                                 <tfoot class="bg-primary text-white">
                                     <tr>
-                                        <th>No.</th>
+                                    <th>No.</th>
                                         <th>Nombre</th>
                                         <th>Apellido paterno</th>
                                         <th>Apellido materno</th>
                                         <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Rol</th>
-                                        <th>Foto</th>
+                                        <th>Telefono</th> 
+                                        <th>Cedula</th>
                                         <th>Correo</th>
-                                        <th>password</th> 
+                                        <th>Usuario</th>
+                                        <th>Rol</th> 
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  
                                         <th>Actualizar-Eliminar</th>
-                                        <th>Subir</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -360,12 +329,7 @@
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario el apellido paterno.</div>
                                         </div>
-                                        <div class="col-md-6">
-                                               <label for="">Fotografia (opcional)</label>
-                                                <input type="file" class="form-control"  name="userfile" data-toggle="tooltip" data-placement="left" title="Subir fotografia">
-                                            <div class="valid-feedback">OK.</div>
-                                            <div class="invalid-feedback">Es necesario el apellido materno.</div>
-                                        </div>
+                                  
                                     </div>
                                 </div>
 
@@ -411,12 +375,7 @@
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario seleccionar una opcion.</div>
                                 </div>
-                                    <div class="col-md-6">
-                                        <label for="">Contraseña:</label>
-                                        <input type="text" class="form-control" name="usu_password" data-toggle="tooltip" data-placement="Bottom"  value="<?php echo htmlspecialchars($row->usu_password); ?>" title="password" placeholder="Contraseña" required>
-                                        <div class="valid-feedback">OK.</div>
-                                        <div class="invalid-feedback">Es necesario el numero telefonico.</div>
-                                    </div>
+                                
                                 </div>
                             </div>
                                 <hr>

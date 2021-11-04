@@ -72,11 +72,11 @@
                                         <th>Apellido paterno</th>
                                         <th>Apellido materno</th>
                                         <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Rol</th>
-                                        <th>Foto</th>
+                                        <th>Telefono</th> 
+                                        <th>Cedula</th>
                                         <th>Correo</th>
-                                        <th>password</th> 
+                                        <th>Usuario</th> 
+                                        <th>Rol</th>
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  
@@ -94,29 +94,10 @@
                                             <td><?php echo $row->ApellidoMaterno; ?></td>
                                             <td><?php echo $row->Sexo; ?></td>
                                             <td><?php echo $row->Telefono; ?></td>
-                                            <td><?php echo $row->Rol; ?></td>
-                                            <td>
-                                              <?php
-                                              $foto=$row->foto;
-                                              if($foto==""){
-                                                //mostrar imagen por defecto
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/perfil.jpg" alt="">
-
-                                                <?php
-
-                                               
-                                              }else{
-                                                //mostrar la foto del usuario
-                                                ?>
-                                                <img width="100" src="<?php echo base_url(); ?>/uploads/usuarios/<?php echo $foto; ?>" alt="">
-                                                <?php
-
-                                              }
-                                              ?>
-                                            </td>
+                                             <td><?php echo $row->Cedula; ?></td>
                                             <td><?php echo $row->Correo; ?></td>
-                                            <td><?php echo $row->usu_password; ?></td>
+                                            <td><?php echo $row->usu_usuario; ?></td>
+                                            <td><?php echo $row->Rol; ?></td>
                                             <td>
                                                 <?php
                                                 if ($row->Estado == '1') {
@@ -144,16 +125,16 @@
                                 </tbody>
                                 <tfoot class="bg-primary text-white">
                                     <tr>
-                                        <th>No.</th>
+                                         <th>No.</th>
                                         <th>Nombre</th>
                                         <th>Apellido paterno</th>
                                         <th>Apellido materno</th>
                                         <th>Sexo</th>
-                                        <th>Cedula</th> 
-                                        <th>Rol</th>
-                                        <th>Foto</th>
+                                        <th>Telefono</th> 
+                                        <th>Cedula</th>
                                         <th>Correo</th>
-                                        <th>password</th> 
+                                        <th>Usuario</th> 
+                                        <th>Rol</th>
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  

@@ -22,6 +22,17 @@ class Conductor extends CI_Controller {
         $this->load->view('est_modificar',$data); //contenido
         $this->load->view('inc_footer.php'); //archivos del pie de pagina
     }
+       public function mas()
+    {
+            //$data['infoConductores']=$this->conductor_model->lista();
+            $idConductor=$_GET['key'];
+            $data['infoConductores']=$this->conductor_model->recuperarConductor($idConductor);
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('conductores/conductores_ver_mas', $data);
+            $this->load->view('incrustaciones/footer2');
+    }
 
 
     public function modificarbd(){

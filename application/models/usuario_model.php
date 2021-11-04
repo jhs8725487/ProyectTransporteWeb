@@ -7,7 +7,7 @@ class Usuario_model extends CI_ModeL {
     public function lista()
         {
             $this->db->select('*');
-            $this->db->from('usuarios');
+            $this->db->from('vwusuarios');
             return $this->db->get();
         }
         public function validar($Correo,$password)
