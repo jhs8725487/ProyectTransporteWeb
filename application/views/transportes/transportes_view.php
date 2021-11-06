@@ -51,7 +51,7 @@
 
                            <span class="float-left" data-toggle="tooltip" data-placement="top" title="Exportar PDF" >
                         <a target="_blank" href="<?php echo base_url(); ?>index.php/transporte/listapdf">
-                            <button class="btn btn-success btn float-right">Exportar </button>
+                            <button class="btn btn-success btn float-right">Exportar a pdf </button>
                         </a>
                         </span>
                         <br>

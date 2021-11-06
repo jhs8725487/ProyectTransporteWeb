@@ -171,25 +171,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="<?php echo base_url(); ?>adminmart/assets/images/users/profile-pic.jpg" alt="" class="rounded-circle" width="40">
-                            <span class="ml-2 d-none d-lg-inline-block"><span>Hola:</span> <span class="text-dark"><?php echo $this->session->userdata('Correo');?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
+                            <span class="ml-2 d-none d-lg-inline-block"><span>Opciones:</span> <span class="text-dark"><?php echo $this->session->userdata('Correo');?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user" class="svg-icon mr-2 ml-1"></i>
-                                My Profile</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card" class="svg-icon mr-2 ml-1"></i>
-                                My Balance</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail" class="svg-icon mr-2 ml-1"></i>
-                                Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings" class="svg-icon mr-2 ml-1"></i>
-                                Account Setting</a>
+                            <a class="dropdown-item"  href="<?php echo base_url(); ?>index.php/Welcome/perfil">><i data-feather="user" class="svg-icon mr-2 ml-1"></i>
+                                Mi perfil</a>
                             <div class="dropdown-divider"></div>
                             <a  href="<?php echo base_url(); ?>index.php/usuarios/logout" class="dropdown-item" href="javascript:void(0)"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>
-                                Logout</a>
+                                Cerrar sesión</a>
                   
-                            <div class="dropdown-divider"></div>
-                            <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                                    Profile</a></div>
                         </div>
                     </li>
                     <!-- ============================================================== -->

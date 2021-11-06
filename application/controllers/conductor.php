@@ -82,7 +82,7 @@ class Conductor extends CI_Controller {
         $this->load->view('subirform',$data); //contenido
         $this->load->view('inc_footer.php'); //archivos del pie de pagina
     }
-    public function subir(){
+    public function updatefhoto(){
         $idConductor=$_POST['idConductor'];
         $nombrearchivo=$idConductor.".jpg";
         //ruta donde se guardan los ficheros
@@ -92,7 +92,10 @@ class Conductor extends CI_Controller {
 
         //reemplazar los archivos
         $direccion="./uploads/conductores/".$nombrearchivo;
-        unlink($direccion);
+        if (file_exists($direccion)) {
+            # code...
+            unlink($direccion);
+        }
         
         //tipos de archivos permitidos
         $config['allowed_types']='jpg'; //'gif|jpg|png'
@@ -106,6 +109,6 @@ class Conductor extends CI_Controller {
             $this->conductor_model->modificarConductor($idConductor,$data);
             $this->upload->data(); 
         }
-        redirect('conductor/test','refresh');
+        redirect('conductor/mas/?key=' . $idConductor, 'refresh');
     }
 }

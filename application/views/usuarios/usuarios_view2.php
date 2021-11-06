@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-7 align-self-center">
                 <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Rol: ".$this->session->userdata('Rol'); ?></h2>
-                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('Correo'); ?></h2>
+                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('usu_usuario'); ?></h2>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">

@@ -85,6 +85,16 @@ class Transporte extends CI_Controller {
         $this->load->view('est_modificar2',$data); //contenido
         $this->load->view('inc_footer.php'); //archivos del pie de pagina
     }
+     public function movilAsignado(){
+        $idConductor=$_GET['key'];
+        $data['infotransporte']=$this->transporte_model->recuperarTransporte2($idConductor);
+
+        $this->load->view('incrustaciones/head');
+        $this->load->view('incrustaciones/menu-topnav');
+        $this->load->view('incrustaciones/menu-sidenav');
+        $this->load->view('transportes/transportes_ver_mas', $data);
+        $this->load->view('incrustaciones/footer2');
+    }
     public function modificarbd(){
         $idTransporte=$_POST['idTransporte'];
         $data['Tipo']=$_POST['Tipo'];
@@ -122,7 +132,8 @@ class Transporte extends CI_Controller {
         //$this->load->view('inc_footer.php'); //archivos del pie de pagina
     }
 
-    public function subir(){
+    public function updatefhoto(){
+        $idConductor=$_POST['idConductor'];
         $idTransporte=$_POST['idTransporte'];
         $nombrearchivo=$idTransporte.".jpg";
         //ruta donde se guardan los ficheros
@@ -132,7 +143,10 @@ class Transporte extends CI_Controller {
 
         //reemplazar los archivos
         $direccion="./uploads/transportes/".$nombrearchivo;
-        unlink($direccion);
+         if (file_exists($direccion)) {
+            # code...
+            unlink($direccion);
+        }
         
         //tipos de archivos permitidos
         $config['allowed_types']='jpg'; //'gif|jpg|png'
@@ -146,6 +160,7 @@ class Transporte extends CI_Controller {
             $this->transporte_model->modificarTransporte($idTransporte,$data); 
             $this->upload->data(); 
         }
-        redirect('transporte/test','refresh');  
+         redirect('transporte/movilAsignado/?key=' . $idConductor, 'refresh'); 
     }
+
 }

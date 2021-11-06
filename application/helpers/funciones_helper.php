@@ -26,4 +26,12 @@ function estado($nota){
     }
     return $estado;
 }
+function formatearFechaView($fecha)
+{
+    $dia = substr($fecha, 8, 2);
+    $mes = substr($fecha, 5, 2);
+    $anio = substr($fecha, 0, 4);
+    $fechaFormateada = $dia . "/" . $mes . "/" . $anio;
+    return $fechaFormateada;
+}
 ?>

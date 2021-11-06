@@ -214,7 +214,7 @@ class Usuarios extends CI_Controller {
             {
                 //crear las variables de session
                 $this->session->set_userdata('idusuario',$row->idUsuario);
-                $this->session->set_userdata('Correo',$row->Correo);
+                $this->session->set_userdata('usu_usuario',$row->usu_usuario);
                 $this->session->set_userdata('Rol',$row->Rol);
                 redirect('usuarios/panel','refresh');
             }
@@ -226,7 +226,7 @@ class Usuarios extends CI_Controller {
     }
     public function panel()
     {
-        if($this->session->userdata('Correo'))
+        if($this->session->userdata('usu_usuario'))
         {
             if($this->session->userdata('Rol')=='Administrador')
             {

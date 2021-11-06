@@ -11,11 +11,21 @@ class Transporte_model extends CI_ModeL {
         $this->db->from('transportes');
         return $this->db->get();
     }
+    
     public function recuperarTransporte($idTransporte)
     {
         $this->db->select('*');
-        $this->db->from('transportes');
+        $this->db->from('vwtransportes');
         $this->db->where('idTransporte',$idTransporte);
+        return $this->db->get();
+
+    }
+
+    public function recuperarTransporte2($idTransporte)
+    {
+        $this->db->select('*');
+        $this->db->from('vwtransportes');
+        $this->db->where('idConductor',$idTransporte);
         return $this->db->get();
 
     }

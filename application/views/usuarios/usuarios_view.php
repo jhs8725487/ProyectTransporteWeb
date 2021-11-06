@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-7 align-self-center">
                 <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Rol: ".$this->session->userdata('Rol'); ?></h2>
-                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('Correo'); ?></h2>
+                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('idusuario'); ?></h2>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
@@ -55,7 +55,7 @@
                         </span>
                           <span class="float-left" data-toggle="tooltip" data-placement="top" title="Exportar PDF" >
                         <a target="_blank" href="<?php echo base_url(); ?>index.php/usuarios/listapdf">
-                            <button class="btn btn-success btn float-right">Exportar </button>
+                            <button class="btn btn-success btn float-right">Exportar a pdf</button>
                         </a>
                         </span>
                        <!-- <span class="float-right">
