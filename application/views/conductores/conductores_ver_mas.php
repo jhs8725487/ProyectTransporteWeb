@@ -83,6 +83,105 @@ foreach ($infoConductores->result() as $row) {
                             </div>
                         </div>
                     </div>
+                    <!--MODAL PARA ACTUALIZAR-->
+            <div class="modal fade" id="editarConductor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-white bg-warning">
+                            <h5 class="modal-title" id="exampleModalLabel">Actualizar Conductor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form action="<?php echo base_url(); ?>index.php/conductor/modificarbd" method="post" class="needs-validation" autocomplete="off" novalidate>
+                                <div class="mb-3">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control text-uppercase" value="<?php echo htmlspecialchars($Nombre); ?>" name="nombre" data-toggle="tooltip" data-placement="left" title="Nombre del conductor" placeholder="Nombre del conductor" required>
+                                    <div class="valid-feedback">OK.</div>
+                                    <div class="invalid-feedback">Es necesario el nombre del conductor.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                                <label for="">Apellido Paterno:</label>
+                                                <input type="text" class="form-control text-uppercase" value="<?php echo htmlspecialchars($apellidoPaterno); ?>" name="ApellidoPaterno" data-toggle="tooltip" data-placement="left" title="Apellido paterno" placeholder="Apellido paterno" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario el apellido paterno.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                               <label for="">Apellido Materno:</label>
+                                                <input type="text" class="form-control text-uppercase" value="<?php echo htmlspecialchars($apellidoMaterno); ?>" name="ApellidoMaterno" data-toggle="tooltip" data-placement="left" title="Apellido paterno" placeholder="Apellido paterno" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario el apellido materno.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             <label for="">Fecha de nacimiento:</label>
+                                                <input type="date" class="form-control text-uppercase" value="<?php echo htmlspecialchars($FechaNacimiento); ?>" name="FechaNacimiento" data-toggle="tooltip" data-placement="left" title="Fecha de nacimiento" placeholder="Nombre del instituto" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario la fecha de nacimiento.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Sexo:</label>
+                                            <select class="form-control" name="sexo" data-toggle="tooltip" data-placement="right" title="Sexo" required>
+                                                <option value="<?php echo $Sexo; ?>" selected><?php echo $row->Sexo; ?></option>
+                                                <option value="M">MASCULINO</option>
+                                            </select>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario seleccionar este campo.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             <label for="">Cedula:</label>
+                                                <input type="input" class="form-control text-uppercase" value="<?php echo htmlspecialchars($Cedula); ?>" name="cedula" data-toggle="tooltip" data-placement="left" title="Cedula" placeholder="Cedula" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Telefono:</label>
+                                                <input type="input" class="form-control text-uppercase" value="<?php echo htmlspecialchars($Telefono); ?>" name="telefono" data-toggle="tooltip" data-placement="left" title="Telefono del conductor" placeholder="Telefono del conductor" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario el telefono del conductor.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                        
+
+
+
+                              
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">Correo electrónico:</label>
+                                            <input type="email" class="form-control" value="<?php echo ($row->Correo == "Sin correo") ? "" : $row->Correo; ?>" name="correo" data-toggle="tooltip" data-placement="right" title="Correo" placeholder="Correo electrónico" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario el correo del instituto.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="mb-3 float-right">
+                                    <input type="hidden" name="idConductor" value="<?php echo $row->idConductor; ?>">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
              <br>
                 <div class="redondear-todo" style="background: #E5E5E5;">
@@ -108,7 +207,7 @@ foreach ($infoConductores->result() as $row) {
                     <div class="row">
                         <div class="col-md-6 col-12 pading">
                             <div class="row justify-content-center">
-                                <button class="btn btn-info rounded-pill" data-toggle="modal" data-target="#actualizarInstituto">Editar datos del conductor</button>
+                                <button class="btn btn-info rounded-pill" data-toggle="modal" data-target="#editarConductor">Editar datos del conductor</button>
                             </div>
 
                         </div>
@@ -166,6 +265,18 @@ foreach ($infoConductores->result() as $row) {
                             <input type="hidden" name="key" value="<?php echo $idConductor; ?>">
                   
                             <button type="submit" class="btn btn-block btn-primary">Ver Movil Asignado</button>
+                        </form>
+
+                    </div>
+                </div>
+                 <br>
+                 
+
+                    <div class="row">
+                    <div class="col-md-12">
+                            <input type="hidden" name="key" value="<?php echo $idConductor; ?>">
+                  
+                            <button type="submit" class="btn btn-block btn-primary">Asignar transporte</button>
                         </form>
 
                     </div>

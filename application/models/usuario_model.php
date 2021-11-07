@@ -23,6 +23,8 @@ class Usuario_model extends CI_ModeL {
     public function agregarUsuario($data)
 	{
         $this->db->insert('usuarios',$data);
+        $this->db->query("CALL uspInsertUser()");
+
 	}
 
     public function recuperarUsuario($idUsuario)

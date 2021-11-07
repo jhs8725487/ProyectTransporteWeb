@@ -257,7 +257,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Cedula:</label>
-                                        <input type="text-uppercase" class="form-control text-uppercase" name="Telefono" data-toggle="tooltip" data-placement="left" title="Dirección" placeholder="Cedula" required>
+                                        <input type="text-uppercase" class="form-control text-uppercase" name="Cedula" data-toggle="tooltip" data-placement="left" title="Dirección" placeholder="Cedula" required>
                                         <div class="valid-feedback">OK.</div>
                                          <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
                                     </div>
@@ -272,7 +272,7 @@
                                             <option value selected>Seleccionar</option>
                                                 <option value="Supervisor">SUPERVISOR</option>
                                                  <option value="Administrador">ADMINISTRADOR</option>
-                                                <option value="Coductor">CONDUCTOR</option>
+                                                <option value="Conductor">CONDUCTOR</option>
                                                 <option value="Cliente">CLIENTE</option>
                                         </select>
                                             <div class="valid-feedback">OK.</div>

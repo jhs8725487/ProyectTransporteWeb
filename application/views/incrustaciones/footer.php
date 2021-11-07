@@ -30,7 +30,7 @@ switch ($msg) {
         }
         window.onload = miFuncion;
         history.pushState(null, "", "");
-      </script>
+</script>
       
 <?php  
     break;
@@ -55,7 +55,29 @@ switch ($msg) {
         }
         window.onload = miFuncion;
         history.pushState(null, "", "");
-      </script>
+</script>
+    <?php  
+    break;
+    case '2':
+    ?>
+<script>
+        function miFuncion() {
+          Swal.fire({
+            icon: "error",
+            title: 'OCURRIO ALGO!',
+            text: 'NO SE HA ASIGNADO UN MOVIL A ESTE CONDUCTOR.',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        }
+        window.onload = miFuncion;
+        history.pushState(null, "", "");
+</script>
+
 
 <?php
 

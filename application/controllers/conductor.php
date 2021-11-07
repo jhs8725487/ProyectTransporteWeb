@@ -6,12 +6,14 @@ class Conductor extends CI_Controller {
     
     public function test()
     {
+        $data2['msg'] = $this->uri->segment(3);
         $data['infoConductores'] = $this->conductor_model->lista();
         $this->load->view('incrustaciones/head');
         $this->load->view('incrustaciones/menu-topnav');
         $this->load->view('incrustaciones/menu-sidenav');
         $this->load->view('conductores/conductores_view', $data);
-        $this->load->view('incrustaciones/footer2');
+        //$this->load->view('incrustaciones/footer2');
+        $this->load->view('incrustaciones/footer',$data2);
     }
 
     public function modificar(){
@@ -27,11 +29,12 @@ class Conductor extends CI_Controller {
             //$data['infoConductores']=$this->conductor_model->lista();
             $idConductor=$_GET['key'];
             $data['infoConductores']=$this->conductor_model->recuperarConductor($idConductor);
+            $data2['msg'] = $this->uri->segment(3);
             $this->load->view('incrustaciones/head');
             $this->load->view('incrustaciones/menu-topnav');
             $this->load->view('incrustaciones/menu-sidenav');
             $this->load->view('conductores/conductores_ver_mas', $data);
-            $this->load->view('incrustaciones/footer2');
+            $this->load->view('incrustaciones/footer',$data2);
     }
 
 

@@ -143,7 +143,7 @@ class Usuarios extends CI_Controller {
   
     public function agregarbd(){
         
-        $username=UsuarioPassword($_POST['Telefono'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
+        $username=UsuarioPassword($_POST['Cedula'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
         $Consulta = $this->usuario_model->validarid($username);
         if($Consulta->num_rows()>0){
            redirect('usuarios/testAdmin/1','refresh');
@@ -152,7 +152,7 @@ class Usuarios extends CI_Controller {
             $data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
             $data['ApellidoMaterno']=$_POST['ApellidoMaterno'];
             $data['Sexo']=$_POST['Sexo'];
-            $data['Telefono']=$_POST['Telefono'];
+            $data['Cedula']=$_POST['Cedula'];
             $data['Rol']=$_POST['Rol'];
             $data['Correo']=$_POST['Correo'];
             $data['usu_usuario']=$username;

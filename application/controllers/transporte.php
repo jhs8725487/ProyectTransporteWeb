@@ -86,14 +86,25 @@ class Transporte extends CI_Controller {
         $this->load->view('inc_footer.php'); //archivos del pie de pagina
     }
      public function movilAsignado(){
-        $idConductor=$_GET['key'];
-        $data['infotransporte']=$this->transporte_model->recuperarTransporte2($idConductor);
 
-        $this->load->view('incrustaciones/head');
-        $this->load->view('incrustaciones/menu-topnav');
-        $this->load->view('incrustaciones/menu-sidenav');
-        $this->load->view('transportes/transportes_ver_mas', $data);
-        $this->load->view('incrustaciones/footer2');
+        $idConductor=$_GET['key'];
+        $Consulta = $this->transporte_model->validarid($idConductor);
+        if($Consulta->num_rows()>0){
+            $data['infotransporte']=$this->transporte_model->recuperarTransporte2($idConductor);
+            $this->load->view('incrustaciones/head');
+            $this->load->view('incrustaciones/menu-topnav');
+            $this->load->view('incrustaciones/menu-sidenav');
+            $this->load->view('transportes/transportes_ver_mas', $data);
+            $this->load->view('incrustaciones/footer2');
+          
+        }else{
+            //redirect('usuarios/testAdmin/1','refresh');
+            //redirect('transporte/movilAsignado/?key=' . $idConductor, 'refresh');
+            //redirect('conductor/movilAsignado/?key=' . $idConductor, 'refresh'); 
+           // redirect('conductor/mas/?key=' . $idConductor.'/2', 'refresh');
+            redirect('conductor/test/2','refresh');
+        }
+       
     }
     public function modificarbd(){
         $idTransporte=$_POST['idTransporte'];
