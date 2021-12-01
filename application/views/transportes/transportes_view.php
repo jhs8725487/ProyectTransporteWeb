@@ -43,11 +43,7 @@
                                 <?php
                                 //echo form_open_multipart('transporte/agregar');
                                 ?>-->
-                                <span class="float-right" data-toggle="modal" data-placement="top" title="Nuevo transporte" >
-                            <button type="button" style="color :white; background: #D0333A" class="btn btn-primary float-right" data-toggle="modal" data-target="#insertartransporte">
-                            <i class="fas fa-plus"></i> Insertar nuevo transporte
-                            </button>
-                        </span>
+                             
 
                            <span class="float-left" data-toggle="tooltip" data-placement="top" title="Exportar PDF" >
                         <a target="_blank" href="<?php echo base_url(); ?>index.php/transporte/listapdf">
@@ -63,6 +59,7 @@
                                 <thead>
                                     <tr>     
                                         <th>No.</th>
+                                        <th>Conductor</th>
                                         <th>Tipo</th>
                                         <th>Color</th>
                                         <th>Numero Placa</th>
@@ -73,7 +70,6 @@
                                         <th>Fecha Ingreso</th>   
                                         <th>Fecha Actualizacion</th>   
                                         <th>Acciones</th>
-                                        <th>Subir</th>  
 
                                     </tr>
                                 </thead>
@@ -84,6 +80,7 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $num;?></td>
+                                            <td><?php echo $row->ApellidoPaterno.' '.$row->ApellidoMaterno.' '.$row->Nombre; ?></td>
                                             <td><?php echo $row->Tipo; ?></td>
                                             <td><?php echo $row->Color; ?></td>
                                             <td><?php echo $row->NumeroPlaca; ?></td>
@@ -95,7 +92,7 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                        <span class="badge bg-danger text-white" >DESHABILITADO</span>
+                                                        <span class="badge bg-danger text-white" >INHABILITADO</span>
                                                         <?php
                                                     }
                                                         ?>
@@ -159,16 +156,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                            <?php
-                                            echo form_open_multipart('transporte/subirfoto');
-                                            ?>
-                                            <input type="hidden" name="idTransporte" value="<?php echo $row->idTransporte; ?>">
-                                            <button type="submit" class="btn btn-primary btn-xs">Subir</button>
-                                            <?php
-                                            echo form_close();
-                                            ?>
-                                                                </td>
                                         </tr>
                                     <?php
                                     $num++;
@@ -180,6 +167,7 @@
                                     <tr>
                                         
                                         <th>No.</th>
+                                        <th>Conductor</th>
                                         <th>Tipo</th>
                                         <th>Color</th>
                                         <th>Numero Placa</th>
@@ -190,7 +178,6 @@
                                         <th>Fecha Ingreso</th>   
                                         <th>Fecha Actualizacion</th> 
                                         <th>Acciones</th>
-                                        <th>Subir</th>  
                                     </tr>
                                 </tfoot>
                             </table>

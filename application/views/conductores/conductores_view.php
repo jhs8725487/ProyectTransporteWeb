@@ -55,8 +55,8 @@
                                         <th>FechaNacimiento</th>
                                         <th>Expedido</th> 
                                         <th>Estado</th> 
-                                        <th>FechaIngreso</th>   
-                                        <th>FechaActualizacion</th> 
+                                        <th>Fecha Ingreso</th>   
+                                        <th>Fecha Actualizacion</th> 
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -86,22 +86,49 @@
                                                     }
                                                         ?>
                                             </td>
-                                            <td><?php echo $row->FechaIngreso; ?></td>
-                                            <td><?php echo $row->FechaActualizacion; ?></td>
+                                            <td><?php echo formatearFecha($row->FechaIngreso); ?></td>
+                                            <td><?php echo formatearFecha($row->FechaActualizacion); ?></td>
                                         
                                       <td>
-                                                <div class="row" style="padding: 15px;">
-                                                    <div class="col-md-12">
+                                          
+                                                
+                                        <div class="row" style="padding: 15px;">
+                                                    <div class="col-md-6">
                                                         <span data-toggle="tooltip" data-placement="top" title="Ver más">
                                                             <form action="<?php echo base_url(); ?>index.php/conductor/mas" method="get">
                                                                 <input type="hidden" name="key" value="<?php echo $row->idConductor; ?>">
-                                                                <button type="submit" class="btn btn-block btn-sm btn-success">
+                                                                <button type="submit" class="btn btn-block btn-sm btn-primary">
                                                                     <i class="fas fa-eye"></i>
                                                                 </button>
                                                             </form>
                                                         </span>
                                                     </div>
-                                                </div>
+
+                                        
+                                        <div class="col-md-6 col-6">
+                                            <?php
+                                            if ($row->Estado == "1") {
+                                            ?>
+                                                <!--<button class="btn btn-block btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>-->
+                                                <span data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                    <button type="button" class="btn btn-block btn-sm btn-danger" data-toggle="modal" data-target="#eliminarConductor<?php echo $row->idConductor; ?>">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </span>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <!--<button class="btn btn-block btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Restaurar"><i class="fas fa-trash-restore"></i></button>-->
+                                                <span data-toggle="tooltip" data-placement="top" title="Restaurar">
+                                                    <button type="button" class="btn btn-block btn-sm btn-success" data-toggle="modal" data-target="#restaurarConductor<?php echo $row->idConductor; ?>">
+                                                        <i class="fas fa-trash-restore"></i>
+                                                    </button>
+                                                </span>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
                                             </td>
                                     
                                         </tr>
@@ -121,8 +148,8 @@
                                         <th>FechaNacimiento</th>
                                         <th>Expedido</th> 
                                         <th>Estado</th> 
-                                        <th>FechaIngreso</th>   
-                                        <th>FechaActualizacion</th> 
+                                        <th>Fecha Ingreso</th>   
+                                        <th>Fecha Actualizacion</th> 
                                         <th>Acciones</th>
                                     </tr>
                                 </tfoot>

@@ -101,10 +101,14 @@ class Transporte extends CI_Controller {
             //redirect('usuarios/testAdmin/1','refresh');
             //redirect('transporte/movilAsignado/?key=' . $idConductor, 'refresh');
             //redirect('conductor/movilAsignado/?key=' . $idConductor, 'refresh'); 
-           // redirect('conductor/mas/?key=' . $idConductor.'/2', 'refresh');
+           //redirect('conductor/mas/2/?key=' . $idConductor, 'refresh');
             redirect('conductor/test/2','refresh');
         }
        
+    }
+    public function verifyCar(){
+        $idConductor=$_GET['key'];
+        $Consulta=$this->transporte_model->validarid($idConductor);
     }
     public function modificarbd(){
         $idTransporte=$_POST['idTransporte'];
@@ -119,6 +123,7 @@ class Transporte extends CI_Controller {
     }
 
     public function agregarbd(){
+        $data['idConductor']=$_POST['idConductor'];
         $data['Color']=$_POST['Color'];
         $data['NumeroPlaca']=$_POST['NumeroPlaca'];
         $data['Tipo']=$_POST['Tipo'];

@@ -27,6 +27,13 @@ class Usuario_model extends CI_ModeL {
 
 	}
 
+    public function modUser($data, $idUsuario)
+    {
+        $this->db->where('idUser', $idUsuario);
+        $this->db->update('usuario',$data);
+        
+    }
+
     public function recuperarUsuario($idUsuario)
         {
             $this->db->select('*');

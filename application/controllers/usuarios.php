@@ -147,6 +147,7 @@ class Usuarios extends CI_Controller {
         $Consulta = $this->usuario_model->validarid($username);
         if($Consulta->num_rows()>0){
            redirect('usuarios/testAdmin/1','refresh');
+           
         }else{
             $data['Nombre']=$_POST['Nombre'];
             $data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
@@ -155,6 +156,7 @@ class Usuarios extends CI_Controller {
             $data['Cedula']=$_POST['Cedula'];
             $data['Rol']=$_POST['Rol'];
             $data['Correo']=$_POST['Correo'];
+            $data['Telefono']=$_POST['Telefono'];
             $data['usu_usuario']=$username;
             $data['usu_password']=md5($username);
             $this->usuario_model->agregarUsuario($data);
@@ -214,7 +216,7 @@ class Usuarios extends CI_Controller {
             {
                 //crear las variables de session
                 $this->session->set_userdata('idusuario',$row->idUsuario);
-                $this->session->set_userdata('usu_usuario',$row->usu_usuario);
+                $this->session->set_userdata('Correo',$row->Correo);
                 $this->session->set_userdata('Rol',$row->Rol);
                 redirect('usuarios/panel','refresh');
             }
@@ -226,7 +228,7 @@ class Usuarios extends CI_Controller {
     }
     public function panel()
     {
-        if($this->session->userdata('usu_usuario'))
+        if($this->session->userdata('Correo'))
         {
             if($this->session->userdata('Rol')=='Administrador')
             {
@@ -256,17 +258,21 @@ class Usuarios extends CI_Controller {
 	}
     
 	public function modificarbd(){
-        $passname=$_POST['usu_password'];
+        //$passname=$_POST['usu_password'];
+        $username=UsuarioPassword($_POST['Cedula'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
 		$idUsuario=$_POST['idUsuario'];
 		$data['ApellidoPaterno']=$_POST['ApellidoPaterno'];
         $data['ApellidoMaterno']=$_POST['ApellidoMaterno'];
 		$data['Nombre']=$_POST['Nombre'];
 		$data['Sexo']=$_POST['Sexo'];
         $data['Telefono']=$_POST['Telefono'];
+        $data['Cedula']=$_POST['Cedula'];
         $data['Rol']=$_POST['Rol'];
         $data['Correo']=$_POST['Correo'];
-        $data['usu_password']=md5($passname);
-        $file=$_POST['userfile'];
+        $data['usu_usuario']=$username;
+        $data['usu_password']=md5($username);
+      //  $data['usu_password']=md5($passname);
+       /* $file=$_POST['userfile'];
         if($file!=""){
         $nombrearchivo=$idUsuario.".jpg";
         //ruta donde se guardan los archivos
@@ -288,10 +294,10 @@ class Usuarios extends CI_Controller {
             $data['foto']=$nombrearchivo;
             $this->usuario_model->modificarUsuario($idysuario,$data);
             $this->upload->data(); 
-        }
-    }else{
+        }*/
+    //}else{
 		$this->usuario_model->modificarUsuario($idUsuario,$data); 	
-        }
+     //   }
         redirect('usuarios/testAdmin','refresh');
 	}
 

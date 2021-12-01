@@ -28,4 +28,14 @@ class Welcome extends CI_Controller {
 		$this->load->view('incrustaciones/footer2');
 
 		}
+
+		public function restablecerPS()
+		{
+			$username=UsuarioPassword($_POST['Cedula'],$_POST['Nombre'],$_POST['ApellidoPaterno'],$_POST['ApellidoMaterno']);
+			$idUsuario=$_POST['idUsuario'];
+			$data['usu_usuario']=$username;
+			$data['usu_password']=md5($username);
+			$this->usuario_model->modificarUsuario($idUsuario,$data); 	
+			redirect('usuarios/testAdmin','refresh');
+		}
 }

@@ -8,7 +8,7 @@ class Transporte_model extends CI_ModeL {
     public function lista()
     {
         $this->db->select('*');
-        $this->db->from('transportes');
+        $this->db->from('vwtransportes');
         return $this->db->get();
     }
     

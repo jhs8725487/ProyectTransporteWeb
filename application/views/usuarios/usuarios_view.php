@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-7 align-self-center">
                 <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Rol: ".$this->session->userdata('Rol'); ?></h2>
-                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('idusuario'); ?></h2>
+                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1"><?php echo "Usuario: ".$this->session->userdata('Correo'); ?></h2>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
@@ -87,7 +87,7 @@
                                         <th>Estado</th>   
                                         <th>Fecha Registro</th>  
                                         <th>Fecha Actualizacion</th>  
-                                        <th>Actualizar-Eliminar</th>
+                                        <th>Acciones</th>
 
                                     </tr>
                                 </thead>
@@ -101,7 +101,19 @@
                                             <td><?php echo $row->Nombre; ?></td>
                                             <td><?php echo $row->ApellidoPaterno; ?></td>
                                             <td><?php echo $row->ApellidoMaterno; ?></td>
-                                            <td><?php echo $row->Sexo; ?></td>
+                                            <td>
+                                                <?php
+                                                if ($row->Sexo == 'F') {
+                                                ?>
+                                                   <span >Femenino</span>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                        <span>Masculino</span>
+                                                        <?php
+                                                }
+                                                        ?>
+                                            </td>
                                             <td><?php echo $row->Telefono; ?></td>
                                             <td><?php echo $row->Cedula; ?></td>
                                             <td><?php echo $row->Correo; ?></td>
@@ -123,8 +135,7 @@
                                             <td ><?php echo formatearFecha($row->FechaRegistro); ?></td>
                                              <td><?php echo formatearFecha($row->FechaActualizacion); ?></td>
                                          <td>
-                                                    <div class="row">
-                                                    <div class="col-md-6 col-6">
+                                                    <div class="btn-group" role="group">
                                                         <!--<button class="btn btn-block btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></button>-->
                                                         <span data-toggle="tooltip" data-placement="top" title="Editar">
                                                             <button type="button" class="btn btn-block btn-sm btn-info" data-toggle="modal" data-target="#editarUsuario<?php echo $row->idUsuario; ?>">
@@ -132,7 +143,14 @@
                                                             </button>
                                                         </span>
                                                     </div>
-                                                    <div class="col-md-6 col-6">
+                                                    <div class="btn-group" role="group">
+                                                        <span class="pading" data-toggle="tooltip" data-placement="top" title="Restablecer contraseña">
+                                                            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#restablecerPS<?php echo $row->idUsuario; ?>">
+                                                                <i class="fas fa-unlock-alt"></i>
+                                                            </button>
+                                                        </span>
+                                                </div>
+                                                <div class="btn-group" role="group">
                                                         <?php
                                                         if ($row->Estado == "1") {
                                                         ?>
@@ -155,7 +173,6 @@
                                                         }
                                                         ?>
                                                     </div>
-                                                </div>
                                             </td>
                                                                       
                                         </tr>
@@ -261,6 +278,13 @@
                                         <div class="valid-feedback">OK.</div>
                                          <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label for="">Telefono:</label>
+                                        <input type="text-uppercase" class="form-control text-uppercase" name="Telefono" data-toggle="tooltip" data-placement="left" title="Dirección" placeholder="Telefono" required>
+                                        <div class="valid-feedback">OK.</div>
+                                         <div class="invalid-feedback">Es necesario el el numero de telefono.</div>
+                                    </div>
                                   
                                 </div>
                             </div>
@@ -344,6 +368,12 @@
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario seleccionar este campo.</div>
                                         </div>
+                                        <div class="col-md-6">
+                                             <label for="">Cedula:</label>
+                                                <input type="input" class="form-control text-uppercase" value="<?php echo htmlspecialchars($row->Cedula); ?>" name="Cedula" data-toggle="tooltip" data-placement="left" title="Cedula" placeholder="Cedula" required>
+                                            <div class="valid-feedback">OK.</div>
+                                            <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -355,11 +385,11 @@
                                             <div class="valid-feedback">OK.</div>
                                             <div class="invalid-feedback">Es necesario la cedula de identidad.</div>
                                         </div>
-                                          <div class="col-md-6">
+                                    <div class="col-md-6">
                                         <label for="">Correo:</label>
                                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($row->Correo); ?>" name="Correo" data-toggle="tooltip" data-placement="Bottom" title="Correo" placeholder="nombre del Usuario" required>
                                         <div class="valid-feedback">OK.</div>
-                                        <div class="invalid-feedback">Es necesario el numero telefonico.</div>
+                                        <div class="invalid-feedback">Es necesario el correo electronico.</div>
                                     </div>
                                 </div>
                             </div>
@@ -446,6 +476,40 @@
                             echo form_close();
                             ?>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="restablecerPS<?php echo $row->idUsuario; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title text-white" id="exampleModalLabel">Restablecer la contraseña</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="<?php echo base_url(); ?>index.php/Welcome/restablecerPS" method="post">
+                            <div class="modal-body">
+                                <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario; ?>">
+                                <input type="hidden" name="Cedula" value="<?php echo $row->Cedula; ?>">
+                                <input type="hidden" name="Nombre" value="<?php echo $row->Nombre; ?>">
+                                <input type="hidden" name="ApellidoPaterno" value="<?php echo $row->ApellidoPaterno; ?>">
+                                <input type="hidden" name="ApellidoMaterno" value="<?php echo $row->ApellidoPaterno; ?>">
+                                esta seguro(a) de restablecer la contraseña de este usuario<br>
+                                <p class="text-center">La contraseña se restablecera en su formato inicial
+                                    <span data-toggle="tooltip" data-placement="right" title="Mas información sobre la contraseña">
+                                        <button type="button" class="btn btn-light btn-sm btn-rounded" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-question"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-warning">Restablecer</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

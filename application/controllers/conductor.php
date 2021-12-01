@@ -71,6 +71,15 @@ class Conductor extends CI_Controller {
         redirect('conductor/test','refresh');
     }
 
+    public function agregardriverbd(){
+        $idConductor=$_POST['idConductor'];
+        $data['Categoria']=$_POST['Categoria'];
+        $data['FechaNacimiento']=$_POST['FechaNacimiento'];
+        $data['Expedido']=$_POST['Expedido'];
+        $this->conductor_model->modificarConductor($idConductor,$data); 
+        redirect('conductor/mas/?key=' . $idConductor, 'refresh');
+    }
+
        public function deleteRestorebd()
     {
         $idInstituto = $_POST['idConductor'];
